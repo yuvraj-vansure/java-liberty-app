@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "javalibertyapp-deployment"
+spec:
+  selector:
+    matchLabels:
+      app: "javalibertyapp-selector"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "javalibertyapp-selector"
+    spec:
+      containers:
+      - name: javalibertyapp
+        image: quay.io/growthstack/java-liberty:latest
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 9080
+          initialDelaySeconds: 20
