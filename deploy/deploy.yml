@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: javalibertyapp
-        image: quay.io/growthstack/java-liberty:latest
+        image: quay.io/yuvan/java-liberty-app:latest
         readinessProbe:
           httpGet:
             path: /health
